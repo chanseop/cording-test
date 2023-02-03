@@ -47,3 +47,27 @@ print(sum)
 좀더 프로그램적으로 생각하고 문제에 본질 결국 가장큰수와 두번째 큰수만 구하면 모든 경우를 해결할수 있다는
 생각을 하지 못한게 아쉽다.
 
+
+
+### 다른 풀이
+```python
+n,m,k=map(int, input().split())
+
+data=list(map(int, input().split()))
+
+data.sort()
+
+first=data[n-1]
+second=data[n-2]
+
+
+count=int(m/(k+1))*k    # 가장 큰수가 더해지는 횟수 6회
+count+=m%(k+1)          # 나머지가 있으면 무조건 가장큰수가 더해진다
+
+result=0
+result+= (count)*first      # 가장큰수 더해주기
+result += (m-count)*second  # 두번째로 큰수 더해주기
+
+print(result)
+```
+- 이 풀이는 예를 들어 m이 8 k가 3 일경우 가장큰수가 3번 반복후 두번째로 큰 수가 1번 반복하는 규칙을 수열로 풀어내서 4개의 index를 한 묶음으로 봐서 풀이를 한것이다.
